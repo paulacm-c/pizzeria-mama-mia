@@ -1,12 +1,79 @@
-# React + Vite
+# Pizzería Mamma Mia - E-commerce App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web de comercio electrónico para una pizzería, desarrollada como proyecto de portafolio para demostrar habilidades en React, gestión de estado y diseño de interfaces.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Catálogo de pizzas**: Visualización de pizzas con imágenes, precios e ingredientes
+- **Carrito de compras**: Gestión del carrito con 增加/disminución de cantidades
+- **Autenticación simulada**: Sistema de login y registro con validación
+- **Diseño responsivo**: Interfaz adaptativa usando Bootstrap
+- **Formateo de precios**: Conversión de precios a formato local (CLP)
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 19** - Biblioteca de JavaScript para interfaces de usuario
+- **Vite** - Herramienta de construcción rápida
+- **Bootstrap 5** - Framework CSS para diseño responsivo
+- **ESLint** - Herramienta de linting para código JavaScript
+
+## 📁 Estructura del Proyecto
+pizzeria-mama-mia/
+
+├── public/
+
+├── src/
+
+│   ├── assets/
+
+│   ├── components/
+
+│   │   ├── CardPizza.jsx    - Componente de tarjeta para cada pizza
+
+│   │   ├── Cart.jsx         - Carrito de compras
+
+│   │   ├── Footer.jsx       - Pie de página
+
+│   │   ├── Header.jsx       - Encabezado principal
+
+│   │   ├── Home.jsx         - Página principal
+
+│   │   ├── LoginPage.jsx    - Página de inicio de sesión
+
+│   │   ├── Navbar.jsx       - Barra de navegación
+
+│   │   └── RegisterPage.jsx - Página de registro
+
+│   ├── utils/
+
+│   │   └── formatPrice.js   - Utilidad para formatear precios
+
+│   ├── App.jsx              - Componente principal
+
+│   ├── index.css            - Estilos globales
+
+│   ├── main.jsx             - Punto de entrada de la aplicación
+
+│   └── pizzas.js            - Datos de pizzas
+
+├── index.html
+
+├── package.json
+
+├── vite.config.js
+
+└── README.md
+
+
+🎨 Mejores Prácticas Demonstradas
+Componentes funcionales con Hooks de React
+Gestión de estado con useState
+Formularios con validación
+Código modular y reutilizable
+Estilos consistentes con Bootstrap
+Uso de prop-types para validación de tipos (práctica profesional)
+📝 Licencia
+Este proyecto es para propósitos educativos y de portafolio.
+
+👤 Autora
+Paula Cortés-Monroy

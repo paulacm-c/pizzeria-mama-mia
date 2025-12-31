@@ -1,35 +1,124 @@
-import React from "react";
-import formatPrice from "../utils/formatPrice";
+import PropTypes from 'prop-types';
 
-const Navbar = ({ setCurrentPage }) => {
-  const total = 25000;
-  const token = false; // Esto se manejará con estado más adelante
-
+/**
+ * Componente Navbar
+ * Barra de navegación principal de la aplicación
+ * 
+ * @param {Object} props - Propiedades del componente
+ * @param {Function} props.setCurrentPage - Función para cambiar la página actual
+ * @param {boolean} props.isAuthenticated - Si el usuario está autenticado
+ * @param {Function} props.onLogout - Función para cerrar sesión
+ * @param {number} props.cartCount - Cantidad de items en el carrito
+ */
+const Navbar = ({ setCurrentPage, isAuthenticated, onLogout, cartCount }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container">
-        <a className="navbar-brand" href="#">🍕 Pizzería Mamma Mia!</a>
+        <a 
+          className="navbar-brand fw-bold" 
+          href="#"
+          onClick={(e) => { e.preventDefault(); setCurrentPage('home'); }}
+        >
+          🍕 Pizzería Mamma Mia!
+        </a>
         
-        <div className="ml-auto">
-          <button className="btn btn-outline-primary me-2" onClick={() => setCurrentPage("home")}>🏠 Home</button>
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <button 
+                className="btn btn-link nav-link" 
+                onClick={() => setCurrentPage('home')}
+              >
+                🏠 Inicio
+              </button>
+            </li>
+          </ul>
+          
+          <div className="d-flex gap-2 flex-wrap justify-content-center">
+            <button 
+              className="btn btn-outline-light" 
+              onClick={() => setCurrentPage('home')}
+            >
+              🏠 Inicio
+            </button>
 
-          {token ? (
-            <>
-              <button className="btn btn-outline-secondary me-2">🔓 Profile</button>
-              <button className="btn btn-outline-danger me-2">🔒 Logout</button>
-            </>
-          ) : (
-            <>
-              {/* <button className="btn btn-outline-success me-2" onClick={() => setCurrentPage("login")}>🔐 Login</button>
-              <button className="btn btn-outline-warning me-2" onClick={() => setCurrentPage("register")}>🔐 Register</button> */}
-            </>
-          )}
+            {isAuthenticated ? (
+              <>
+                <button className="btn btn-outline-secondary">
+                  👤 Mi Perfil
+                </button>
+                <button 
+                  className="btn btn-outline-danger"
+                  onClick={onLogout}
+                >
+                  🚪 Cerrar Sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <button 
+                  className="btn btn-outline-success" 
+                  onClick={() => setCurrentPage('login')}
+                >
+                  🔐 Iniciar Sesión
+                </button>
+                <button 
+                  className="btn btn-outline-warning" 
+                  onClick={() => setCurrentPage('register')}
+                >
+                  📝 Registrarse
+                </button>
+              </>
+            )}
 
-          <button className="btn btn-outline-dark">🛒 Total: {formatPrice(total)}</button>
+            <button 
+              className="btn btn-primary position-relative"
+              onClick={() => setCurrentPage('cart')}
+            >
+              🛒 Carrito
+              {cartCount > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {cartCount}
+                  <span className="visually-hidden">items en carrito</span>
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </nav>
   );
+};
+
+/**
+ * Definición de PropTypes para validación de propiedades
+ */
+Navbar.propTypes = {
+  setCurrentPage: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+  onLogout: PropTypes.func,
+  cartCount: PropTypes.number,
+};
+
+/**
+ * Valores por defecto para las propiedades
+ */
+Navbar.defaultProps = {
+  isAuthenticated: false,
+  onLogout: () => {},
+  cartCount: 0,
 };
 
 export default Navbar;

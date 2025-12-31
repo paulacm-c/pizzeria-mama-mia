@@ -1,8 +1,10 @@
 {
   "name": "pizzeria-mamma-mia",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "E-commerce application for a pizzeria built with React and Bootstrap",
+  "author": "Paula Cortés-Monroy",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +13,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
